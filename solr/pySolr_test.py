@@ -18,15 +18,16 @@ solr.ping()
 solr.add([
     # if no ID is provided, solr generates a UUID
     {
-        "title": "A test document",
+        "title": "A bla document",
+        "text": "bla bli blu"
     },
-    {
-        "title": "The Banana: Tasty or Dangerous?",
-        # "_doc": [
-        #     { "id": "child_doc_1", "title": "peel" },
-        #     { "id": "child_doc_2", "title": "seed" },
-        # ]
-    },
+    # {
+    #     "title": "The Banana: Tasty or Dangerous?",
+    #     "_doc": [
+    #         { "id": "child_doc_1", "title": "peel" },
+    #         { "id": "child_doc_2", "title": "seed" },
+    #     ]
+    # },
 ])
 
 # You can index a parent/child document relationship by

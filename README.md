@@ -4,7 +4,7 @@
 ## How to Set up SOLR (WIP)
 Source: https://solr.apache.org/guide/8_10/solr-tutorial.html
 
-Once properly downloaded, from the folder where you've started it run:  
+Once properly downloaded, from the folder where you've extracted it (e.g. solr-8.10.0) run:  
 `solr-8.10.0:$ ./bin/solr start -e cloud`
 
 Make sure to use port 8983 if you want to use the script to start.
