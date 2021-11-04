@@ -45,15 +45,16 @@ results = solr.search('*')
 print("Saw {0} result(s).".format(len(results)))
 
 # Just loop over it to access the results.
-for result in results:
-    print("The title is '{0}'.".format(result['title']))
+# for result in results:
+#     print("The title is '{0}'.".format(result['title']))
 
 # For a more advanced query, say involving highlighting, you can pass
 # additional options to Solr.
-results = solr.search('bananas', **{
-    'hl': 'true',
-    'hl.fragsize': 10,
-})
+# results = solr.search('DETEC', **{
+#     'hl': 'true',
+#     'hl.fragsize': 10,
+# })
+
 
 # Traverse a cursor using its iterator:
 for doc in solr.search('*:*',fl='id',sort='id ASC',cursorMark='*'):
