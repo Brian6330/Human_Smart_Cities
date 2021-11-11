@@ -1,0 +1,41 @@
+2021-10-22 12:31:26.444 INFO  (main) [   ] o.e.j.u.log Logging initialized @1031ms to org.eclipse.jetty.util.log.Slf4jLog
+2021-10-22 12:31:26.669 INFO  (main) [   ] o.e.j.s.Server jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17.0.1+12-LTS-39
+2021-10-22 12:31:26.681 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:///D:/Downloads/to%20del/solr/solr-8.10.1/server/contexts/] at interval 0
+2021-10-22 12:31:27.171 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+2021-10-22 12:31:27.181 INFO  (main) [   ] o.e.j.s.session DefaultSessionIdManager workerName=node0
+2021-10-22 12:31:27.181 INFO  (main) [   ] o.e.j.s.session No SessionScavenger set, using defaults
+2021-10-22 12:31:27.184 INFO  (main) [   ] o.e.j.s.session node0 Scavenging every 660000ms
+2021-10-22 12:31:27.240 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
+2021-10-22 12:31:27.244 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 8.10.1
+2021-10-22 12:31:27.244 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in standalone mode on port 8983
+2021-10-22 12:31:27.244 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: D:\Downloads\to del\solr\solr-8.10.1
+2021-10-22 12:31:27.244 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2021-10-22T12:31:27.244186800Z
+2021-10-22 12:31:27.254 INFO  (main) [   ] o.a.s.c.SolrPaths Using system property solr.solr.home: D:\Downloads\to del\solr\solr-8.10.1\server\solr
+2021-10-22 12:31:27.254 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from D:\Downloads\to del\solr\solr-8.10.1\server\solr\solr.xml
+2021-10-22 12:31:27.330 INFO  (main) [   ] o.a.s.c.SolrXmlConfig MBean server found: com.sun.jmx.mbeanserver.JmxMBeanServer@533bda92, but no JMX reporters were configured - adding default JMX reporter.
+2021-10-22 12:31:27.896 INFO  (main) [   ] o.a.s.h.c.HttpShardHandlerFactory Host whitelist initialized: WhitelistHostChecker [whitelistHosts=null, whitelistHostCheckingEnabled=true]
+2021-10-22 12:31:28.103 WARN  (main) [   ] o.e.j.u.s.S.config Trusting all certificates configured for Client@ad3324b[provider=null,keyStore=null,trustStore=null]
+2021-10-22 12:31:28.103 WARN  (main) [   ] o.e.j.u.s.S.config No Client EndPointIdentificationAlgorithm configured for Client@ad3324b[provider=null,keyStore=null,trustStore=null]
+2021-10-22 12:31:28.239 WARN  (main) [   ] o.e.j.u.s.S.config Trusting all certificates configured for Client@2819c460[provider=null,keyStore=null,trustStore=null]
+2021-10-22 12:31:28.240 WARN  (main) [   ] o.e.j.u.s.S.config No Client EndPointIdentificationAlgorithm configured for Client@2819c460[provider=null,keyStore=null,trustStore=null]
+2021-10-22 12:31:28.283 WARN  (main) [   ] o.a.s.c.CoreContainer Not all security plugins configured!  authentication=disabled authorization=disabled.  Solr is only as secure as you make it. Consider configuring authentication/authorization before exposing Solr to users internal or external.  See https://s.apache.org/solrsecurity for more info
+2021-10-22 12:31:32.921 INFO  (main) [   ] o.a.s.c.TransientSolrCoreCacheDefault Allocating transient core cache for max 2147483647 cores with initial capacity of 1024
+2021-10-22 12:31:32.931 INFO  (main) [   ] o.a.s.h.a.MetricsHistoryHandler No .system collection, keeping metrics history in memory.
+2021-10-22 12:31:32.994 INFO  (main) [   ] o.a.s.m.r.SolrJmxReporter JMX monitoring for 'solr.node' (registry 'solr.node') enabled at server: com.sun.jmx.mbeanserver.JmxMBeanServer@533bda92
+2021-10-22 12:31:32.994 INFO  (main) [   ] o.a.s.m.r.SolrJmxReporter JMX monitoring for 'solr.jvm' (registry 'solr.jvm') enabled at server: com.sun.jmx.mbeanserver.JmxMBeanServer@533bda92
+2021-10-22 12:31:32.995 INFO  (main) [   ] o.a.s.m.r.SolrJmxReporter JMX monitoring for 'solr.jetty' (registry 'solr.jetty') enabled at server: com.sun.jmx.mbeanserver.JmxMBeanServer@533bda92
+2021-10-22 12:31:33.028 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found 0 core definitions underneath D:\Downloads\to del\solr\solr-8.10.1\server\solr
+2021-10-22 12:31:33.347 INFO  (main) [   ] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@29ef6856{/solr,file:///D:/Downloads/to%20del/solr/solr-8.10.1/server/solr-webapp/webapp/,AVAILABLE}{D:\Downloads\to del\solr\solr-8.10.1\server/solr-webapp/webapp}
+2021-10-22 12:31:33.363 INFO  (main) [   ] o.e.j.s.AbstractConnector Started ServerConnector@4bd1f8dd{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8983}
+2021-10-22 12:31:33.363 INFO  (main) [   ] o.e.j.s.Server Started @7954ms
+2021-10-22 12:31:33.910 INFO  (qtp1759250827-29) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=88
+2021-10-22 12:33:20.469 INFO  (ShutdownMonitor) [   ] o.e.j.s.AbstractConnector Stopped ServerConnector@4bd1f8dd{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8983}
+2021-10-22 12:33:20.469 INFO  (ShutdownMonitor) [   ] o.e.j.s.session node0 Stopped scavenging
+2021-10-22 12:33:20.472 INFO  (ShutdownMonitor) [   ] o.a.s.c.CoreContainer Shutting down CoreContainer instance=1415979460
+2021-10-22 12:33:20.475 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.node tag=null
+2021-10-22 12:33:20.475 INFO  (ShutdownMonitor) [   ] o.a.s.m.r.SolrJmxReporter Closing reporter [org.apache.solr.metrics.reporters.SolrJmxReporter@35f3a22c: rootName = null, domain = solr.node, service url = null, agent id = null] for registry solr.node/com.codahale.metrics.MetricRegistry@6997cb4a
+2021-10-22 12:33:20.481 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jvm tag=null
+2021-10-22 12:33:20.482 INFO  (ShutdownMonitor) [   ] o.a.s.m.r.SolrJmxReporter Closing reporter [org.apache.solr.metrics.reporters.SolrJmxReporter@3b705be7: rootName = null, domain = solr.jvm, service url = null, agent id = null] for registry solr.jvm/com.codahale.metrics.MetricRegistry@2da05793
+2021-10-22 12:33:20.484 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jetty tag=null
+2021-10-22 12:33:20.484 INFO  (ShutdownMonitor) [   ] o.a.s.m.r.SolrJmxReporter Closing reporter [org.apache.solr.metrics.reporters.SolrJmxReporter@3a790e40: rootName = null, domain = solr.jetty, service url = null, agent id = null] for registry solr.jetty/com.codahale.metrics.MetricRegistry@6433ad32
+2021-10-22 12:33:20.494 INFO  (ShutdownMonitor) [   ] o.e.j.s.h.ContextHandler Stopped o.e.j.w.WebAppContext@29ef6856{/solr,null,STOPPED}{D:\Downloads\to del\solr\solr-8.10.1\server/solr-webapp/webapp}
