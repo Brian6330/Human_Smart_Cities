@@ -1,18 +1,20 @@
+import random
+
 from tika import parser
 import pysolr
 
 
-solr = pysolr.Solr("http://localhost:8983/solr/upload-test/", always_commit=True)
+solr = pysolr.Solr("http://localhost:8983/solr/pdf-uploader/", always_commit=True)
 
 
 #### Testing Tika to manually import extracted text
-file_data = parser.from_file("Data/asrbradiationcodeportingdocumentationpriscofreifinal.pdf")
+# file_data = parser.from_file("Data/asrbradiationcodeportingdocumentationpriscofreifinal.pdf")
 
 # file_data['content'] is used to get the content of the pdf file.
-output = file_data['content']
+# output = file_data['content']
 
 # This output.encode encodes the text into utf-8 format.
-output = output.encode('utf-8', errors='replace')
+# output = output.encode('utf-8', errors='replace')
 
 # for debugging: saves the extracted text to a file called output.txt
 # with open('output_file.txt', 'w') as the_file:
@@ -27,11 +29,11 @@ output = output.encode('utf-8', errors='replace')
 
 ###
 
-
 # TODO get the following working to POST pdf files
-# f = open("Data/asrbradiationcodeportingdocumentationpriscofreifinal.pdf", mode='r', encoding='utf-8', errors='ignore')
+f = open("../Data/asrbradiationcodeportingdocumentationpriscofreifinal.pdf", mode='rb')
 # f_bi = open("Data/asrbradiationcodeportingdocumentationpriscofreifinal.pdf", mode='rb', encoding='utf-8', errors='ignore')
-# solr.extract(f)
+
+solr.extract(file_obj=f, extractOnly=False, handler="update/extract", kwargs="literal.id=678")
 
 
 results = solr.search('*') # Can be replaced by what you one

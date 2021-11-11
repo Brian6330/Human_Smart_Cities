@@ -129,7 +129,7 @@
      in a compatible way. Any analysis applied to the <uniqueKey> should _not_ produce multiple
      tokens
    -->   
-   <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" /> 
+   <field name="id" type="string" indexed="true" stored="true" required="false" multiValued="false" />
 
    <field name="pre" type="preanalyzed" indexed="true" stored="true"/>
    <field name="sku" type="text_en_splitting_tight" indexed="true" stored="true" omitNorms="true"/>

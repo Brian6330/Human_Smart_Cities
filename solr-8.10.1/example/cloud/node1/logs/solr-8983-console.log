@@ -1,12 +1,12 @@
-2021-11-11 07:52:50.452 INFO  (main) [   ] o.e.j.u.log Logging initialized @1482ms to org.eclipse.jetty.util.log.Slf4jLog
-2021-11-11 07:52:50.800 INFO  (main) [   ] o.e.j.s.Server jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17.0.1+12-LTS-39
-2021-11-11 07:52:50.820 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:///D:/Git/Human_Smart_Cities/solr-8.10.1/server/contexts/] at interval 0
-2021-11-11 07:52:51.559 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
-2021-11-11 07:52:51.577 INFO  (main) [   ] o.e.j.s.session DefaultSessionIdManager workerName=node0
-2021-11-11 07:52:51.577 INFO  (main) [   ] o.e.j.s.session No SessionScavenger set, using defaults
-2021-11-11 07:52:51.580 INFO  (main) [   ] o.e.j.s.session node0 Scavenging every 660000ms
-2021-11-11 07:52:51.673 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
-2021-11-11 07:52:51.680 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 8.10.1
-2021-11-11 07:52:51.680 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in cloud mode on port 8983
-2021-11-11 07:52:51.680 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: D:\Git\Human_Smart_Cities\solr-8.10.1
-2021-11-11 07:52:51.681 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2021-11-11T07:52:51.680176400Z
+2021-11-11 08:10:19.045 INFO  (main) [   ] o.e.j.u.log Logging initialized @1496ms to org.eclipse.jetty.util.log.Slf4jLog
+2021-11-11 08:10:19.390 INFO  (main) [   ] o.e.j.s.Server jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17.0.1+12-LTS-39
+2021-11-11 08:10:19.407 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:///D:/Git/Human_Smart_Cities/solr-8.10.1/server/contexts/] at interval 0
+2021-11-11 08:10:20.144 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+2021-11-11 08:10:20.162 INFO  (main) [   ] o.e.j.s.session DefaultSessionIdManager workerName=node0
+2021-11-11 08:10:20.162 INFO  (main) [   ] o.e.j.s.session No SessionScavenger set, using defaults
+2021-11-11 08:10:20.166 INFO  (main) [   ] o.e.j.s.session node0 Scavenging every 600000ms
+2021-11-11 08:10:20.273 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
+2021-11-11 08:10:20.280 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 8.10.1
+2021-11-11 08:10:20.281 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in cloud mode on port 8983
+2021-11-11 08:10:20.281 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: D:\Git\Human_Smart_Cities\solr-8.10.1
+2021-11-11 08:10:20.281 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2021-11-11T08:10:20.281179100Z
