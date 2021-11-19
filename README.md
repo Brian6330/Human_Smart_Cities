@@ -27,3 +27,41 @@ Once you're done, use `solr stop -all` to stop all running solr instances
 
 ## Querying data
 - Appending `~` to the query, allows one to use the default error-tolerance of solr, which is 2 characters.
+
+## Troubleshooting
+### Environmental variables
+To start `solr` one has to set the environmental variable `JAVA_HOME` and `JRE_HOME`.
+`JAVA_HOME` has for example the path (`C:\Program Files\Java\jdk-X.X.X`) and `JRE_HOME` the path (`C:\Program Files (x86)\java\jre1.x.x`).
+
+### Solr node is already running but can't stop solr
+If the command `solr stop -all` or `solr.cmd stop -all` doesn't help we have to find the process id and stop the process with command line.<br /><br />
+WINDOWS:<br />
+Find process id on port 8983
+```
+netstat -ano | find "8983"
+```
+which gives for example:<br />
+```
+TCP 0.0.0.0:8983    0.0.0.0:0   LISTENING   10896
+```
+the last value in the row is the process id, which can be used to kill the process with the following command:
+```
+taskkill /F /pid 10896
+```
+
+# Docker-compose
+First install docker: <br/>
+Windows: Install Docker Desktop and start it
+Linux: 
+```
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
+Starting the container with:
+```
+solr/docker-compose up -d
+```
+Stopping the container with:
+```
+docker-compose stop
+```
