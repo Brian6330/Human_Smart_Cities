@@ -11,6 +11,9 @@ services:
      - solr
     depends_on:
      - zoo1
+    command:
+      - solr-precreate
+      - gettingstarted
 
   zoo1:
     image: zookeeper:latest
@@ -39,7 +42,7 @@ services:
       - "-e"
       - "-x"
       - "-c"
-      - "wait-for-solr.sh --max-attempts 10 --wait-seconds 5 --solr-url http://$$SOLR_HOST:8983/; solr create_collection -c hsc-data -p 8983"
+      - "wait-for-solr.sh --max-attempts 10 --wait-seconds 5 --solr-url http://$$SOLR_HOST:8983; solr create_collection -c hsc-data -d sample_techproducts_configs -p 8983"
 
 networks:
   solr:

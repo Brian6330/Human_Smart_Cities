@@ -2,7 +2,7 @@
 from nltk.tokenize import word_tokenize
 from stop_words import get_stop_words
 
-# First time setup required for nltk
+# First time setup required for nltk; https://www.nltk.org/data.html
 
 stop_words = get_stop_words('english')
 
