@@ -3,7 +3,7 @@ import os
 import pysolr
 
 # Syntax is http://localhost:8983/solr/YOUR-COLLECTION-HERE/
-solr = pysolr.Solr("http://localhost:8983/solr/pdf-uploader/", always_commit=True)
+solr = pysolr.Solr("http://localhost:8983/solr/hsc-data/", always_commit=True)
 
 for entry in os.scandir("../Data"):
     if (entry.path.endswith(".pdf") and entry.is_file):

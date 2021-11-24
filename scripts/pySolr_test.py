@@ -4,7 +4,7 @@ import pysolr
 
 # Create a client instance. The timeout and authentication options are not required.
 # Requires a collection to be defined, can be done as part of https://solr.apache.org/guide/8_10/solr-tutorial.html
-solr = pysolr.Solr("http://localhost:8983/solr/test/", always_commit=True)
+solr = pysolr.Solr("http://localhost:8983/solr/hsc-data/", always_commit=True)
 
 # Note that auto_commit defaults to False for performance. You can set
 # `auto_commit=True` to have commands always update the index immediately, make
