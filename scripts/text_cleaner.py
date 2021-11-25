@@ -27,8 +27,33 @@ def clean_text(text):
 # TODO
 def create_CountSet(word_list):
     word_set = set(word_list)
-    # for x in word_set:
+    wordDict = {}
+    for x in word_set:
+        count = 0
+        for y in word_list:
+            if y == x:
+                count += 1
 
+        wordDict[x] = count
 
+    return wordDict
+
+def combineDicts(dict1, dict2):
+    newDict = {}
+    wordSet = set()
+    for x in dict1:
+        wordSet.add(x)
+    for y in dict2:
+        wordSet.add(y)
+
+    for z in wordSet:
+        count = 0
+        if (dict1[z]):
+            count += dict1[z]
+        if (dict2[z]):
+            count += dict2[z]
+
+        newDict[z] = count
+
+    return newDict
     
-    # Tee-hee
