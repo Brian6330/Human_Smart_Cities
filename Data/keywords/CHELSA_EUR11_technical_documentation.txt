@@ -1,0 +1,10 @@
+climate
+data
+temperature
+precipitation
+geographic
+variables
+CHELSA
+parameters
+wind
+orographic
