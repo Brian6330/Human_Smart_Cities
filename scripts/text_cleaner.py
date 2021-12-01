@@ -7,7 +7,6 @@ from stop_words import get_stop_words
 stop_words = get_stop_words('english')
 
 
-# TODO: Clean-up
 def clean_text(text):
     tokenized_words = word_tokenize(text)
     cleaned_word_list = []
@@ -18,40 +17,34 @@ def clean_text(text):
     return cleaned_word_list
 
 
-# TODO
-def create_CountSet(word_list):
+def create_count_set(word_list):
     word_set = set(word_list)
-    wordDict = {}
+    word_dict = {}
     for x in word_set:
         count = 0
         for y in word_list:
             if y == x:
                 count += 1
 
-        wordDict[x] = count
+        word_dict[x] = count
 
-    return wordDict
+    return word_dict
 
 
-def combineDicts(dict1, dict2):
-    newDict = {}
-    wordSet = set()
+def combine_dicts(dict1, dict2):
+    new_dict = {}
+    word_set = set()
     for x in dict1:
-        wordSet.add(x)
+        word_set.add(x)
     for y in dict2:
-        wordSet.add(y)
+        word_set.add(y)
 
-    for z in wordSet:
+    for z in word_set:
         count = 0
         if z in dict1:
             count += dict1[z]
         if z in dict2:
             count += dict2[z]
-        newDict[z] = count
+        new_dict[z] = count
 
-    return newDict
-
-
-def convert(lst):
-    res_dct = {lst[i]: lst[i + 1] for i in range(0, len(lst), 2)}
-    return res_dct
+    return new_dict
