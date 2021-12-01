@@ -6,7 +6,7 @@ import pysolr
 solr = pysolr.Solr("http://localhost:8983/solr/hsc-data/", always_commit=True)
 
 for entry in os.scandir("../Data"):
-    if (entry.path.endswith(".pdf") and entry.is_file):
+    if entry.path.endswith(".pdf") and entry.is_file:
         generated_id = {"literal.id": uuid.uuid4()}
         f = open(entry.path, mode='rb')
         solr.extract(file_obj=f, extractOnly=False, handler="update/extract", **generated_id)
