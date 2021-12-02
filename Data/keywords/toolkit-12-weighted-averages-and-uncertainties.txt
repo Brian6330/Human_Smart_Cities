@@ -1,0 +1,10 @@
+weight
+average
+mean
+flow
+inverse
+variance
+scheme
+central
+limit
+theorem
