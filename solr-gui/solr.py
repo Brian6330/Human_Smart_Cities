@@ -5,8 +5,8 @@ def solr_search(server: str = 'http://localhost:8983/solr/hsc-data/', query: str
     solr = pysolr.Solr(server, always_commit=True)
 
     if query == '':
-        query = '*'
+        query = '*:*'
     if fuzzy:
-        query = "\"" + query + "\"~"
+        query = query + '~'
 
-    return solr.search(query)
+    return solr.search(query, **{'rows': 100})

@@ -30,10 +30,7 @@ class GUI(QWidget):
         self.results = QListWidget()
         self.results = QTableWidget()
         self.results.setColumnCount(3)
-        self.results.setColumnWidth(0, 50)
-        self.results.setColumnWidth(1, 250)
-        self.results.setColumnWidth(2, 250)
-        self.results.setRowCount(20)
+        self.results.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.results.setHorizontalHeaderLabels(['ID', 'Title(s)', 'Author(s)'])
 
         layout = QGridLayout()
@@ -53,21 +50,29 @@ class GUI(QWidget):
     def search(self):
         server = self.server_address.text()
         query = self.search_box.text()
-        fuzzy = self.fuzzy_toggle.isDown()
+        fuzzy = self.fuzzy_toggle.isChecked()
 
         docs = solr_search(server, query, fuzzy)
 
-        self.results.clear()
+        # unneeded as we overwrite cell contents after setting row count
+        # self.results.clearContents()
+        self.results.setRowCount(len(docs))
         for row_index, doc in enumerate(docs):
             doc_id = QTableWidgetItem(str(doc['id']))
             doc_id.setFlags(doc_id.flags() & ~Qt.ItemIsEditable)
             self.results.setItem(row_index, 0, doc_id)
 
-            title = QTableWidgetItem(str(doc['title']))
+            title_str = ', '.join(doc.get('title', []))
+            title = QTableWidgetItem(title_str)
             title.setFlags(title.flags() & ~Qt.ItemIsEditable)
             self.results.setItem(row_index, 1, title)
 
-            author = QTableWidgetItem(str(doc['author']))
+            authors = doc.get('author', [])
+            if authors is list:
+                author_str = ', '.join(authors)
+            else:
+                author_str = str(authors)
+            author = QTableWidgetItem(author_str)
             author.setFlags(author.flags() & ~Qt.ItemIsEditable)
             self.results.setItem(row_index, 2, author)
 
