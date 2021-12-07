@@ -1,0 +1,6 @@
+data
+distribution
+quantil
+average
+density
+percent

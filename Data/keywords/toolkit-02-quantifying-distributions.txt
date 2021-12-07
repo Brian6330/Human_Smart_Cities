@@ -1,0 +1,9 @@
+data
+distribution
+measure
+mean
+median
+variance
+standard
+percent
+sample

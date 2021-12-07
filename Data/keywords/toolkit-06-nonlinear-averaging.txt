@@ -1,0 +1,8 @@
+problem
+general
+average
+mean
+curve
+taylor
+monte
+carlo

@@ -1,0 +1,12 @@
+uncertainty
+error
+propagation
+mean
+deviation
+standard
+variability
+variance
+confidence
+interval
+monte
+carlo

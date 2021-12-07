@@ -1,0 +1,9 @@
+estimator
+statistic
+distribution
+rank
+sum
+hodges-lehmann
+median
+confidence
+limit

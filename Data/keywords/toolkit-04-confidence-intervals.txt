@@ -1,0 +1,10 @@
+confidence
+interval
+uncertainity
+limit
+quantity
+mean
+standard
+population
+probability
+distribution

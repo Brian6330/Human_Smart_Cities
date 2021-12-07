@@ -1,0 +1,9 @@
+swiss
+permafrost
+monitoring
+network
+hydrology
+sharing
+data
+observation
+environment

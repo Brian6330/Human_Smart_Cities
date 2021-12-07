@@ -1,0 +1,16 @@
+mountain
+permafrost
+hydrology
+slope
+bedrock
+ice
+climate
+degradation
+polar
+alpine
+temperature
+topography
+water
+permos
+network
+impact
