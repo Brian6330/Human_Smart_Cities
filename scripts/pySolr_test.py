@@ -15,12 +15,12 @@ solr = pysolr.Solr("http://localhost:8983/solr/hsc-data/", always_commit=True)
 solr.ping()
 
 # How you'd index data.
-solr.add([
+# solr.add([
     # if no ID is provided, solr generates a UUID
-    {
-        "title": "A bla document",
-        "text": "bla bli blu"
-    },
+    # {
+    #     "title": "A bla document",
+    #     "text": "bla bli blu"
+    # },
     # {
     #     "title": "The Banana: Tasty or Dangerous?",
     #     "_doc": [
@@ -28,7 +28,7 @@ solr.add([
     #         { "id": "child_doc_2", "title": "seed" },
     #     ]
     # },
-])
+# ])
 
 # You can index a parent/child document relationship by
 # associating a list of child documents with the special key '_doc'. This
