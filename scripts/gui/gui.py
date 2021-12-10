@@ -3,6 +3,8 @@ import sys
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import *
 
+from scripts.evaluation import search_for_keyword
+from scripts.keyword_counter import determine_authors
 from solr import *
 
 
@@ -109,25 +111,26 @@ class GUI(QWidget):
             author.setFlags(author.flags() & ~Qt.ItemIsEditable)
             self.search_results.setItem(row_index, 2, author)
 
+        authors = determine_authors(docs)
+        experts = search_for_keyword(authors, search_term="query")
         # TODO: add experts
         # experts = XYZ
-        # self.experts.setRowCount(len(experts))
-        # for row_index, expert in enumerate(experts):
-        #     # set SCORE
-        #     doc_id = QTableWidgetItem(str(expert['score']))
-        #     doc_id.setFlags(doc_id.flags() & ~Qt.ItemIsEditable)
-        #     self.experts.setItem(row_index, 0, doc_id)
-        #
-        #     # set AUTHORS
-        #     authors = expert.get('author', [])
-        #     if authors is list:
-        #         author_str = ', '.join(authors)
-        #     else:
-        #         author_str = str(authors)
-        #     author = QTableWidgetItem(author_str)
-        #     author.setFlags(author.flags() & ~Qt.ItemIsEditable)
-        #     self.experts.setItem(row_index, 1, author)
+        self.experts.setRowCount(len(experts))
+        for row_index, expert in enumerate(experts):
+            # set SCORE
+            doc_id = QTableWidgetItem(str(expert['score']))
+            doc_id.setFlags(doc_id.flags() & ~Qt.ItemIsEditable)
+            self.experts.setItem(row_index, 0, doc_id)
 
+            # set AUTHORS
+            authors = expert.get('author', [])
+            if authors is list:
+                author_str = ', '.join(authors)
+            else:
+                author_str = str(authors)
+            author = QTableWidgetItem(author_str)
+            author.setFlags(author.flags() & ~Qt.ItemIsEditable)
+            self.experts.setItem(row_index, 1, author)
 
 
 if __name__ == "__main__":
