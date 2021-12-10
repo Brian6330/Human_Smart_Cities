@@ -4,7 +4,7 @@ from PySide6.QtCore import Qt
 from PySide6.QtWidgets import *
 
 from scripts.expert_finder import search_for_keyword
-from scripts.keyword_counter import determine_authors
+from scripts.keyword_counter import determine_authors, determine_keywords
 from solr import *
 
 
@@ -38,10 +38,11 @@ class GUI(QWidget):
         self.search_results.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.search_results.setHorizontalHeaderLabels(['ID', 'Title(s)', 'Author(s)'])
 
-        self.experts = QTableWidget()
-        self.experts.setColumnCount(2)
-        self.experts.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-        self.experts.setHorizontalHeaderLabels(['Score', 'Author(s)'])
+        self.experts = QListWidget()
+        # self.experts = QTableWidget()
+        # self.experts.setColumnCount(2)
+        # self.experts.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        # self.experts.setHorizontalHeaderLabels(['Score', 'Author(s)'])
 
     def __setup_layout__(self) -> None:
         """
@@ -62,7 +63,7 @@ class GUI(QWidget):
         ROW += 1
         layout.addWidget(self.search_results, ROW, 0, 10, 4)
         ROW += 10
-        layout.addWidget(QLabel('Experts:'), ROW, 0)
+        layout.addWidget(QLabel('Experts (best match first):'), ROW, 0)
         ROW += 1
         layout.addWidget(self.experts, ROW, 0, 5, 4)
         ROW += 1
@@ -112,25 +113,13 @@ class GUI(QWidget):
             self.search_results.setItem(row_index, 2, author)
 
         authors = determine_authors(docs)
-        experts = search_for_keyword(authors, search_term="query")
-        # TODO: add experts
-        # experts = XYZ
-        self.experts.setRowCount(len(experts))
-        for row_index, expert in enumerate(experts):
-            # set SCORE
-            doc_id = QTableWidgetItem(str(expert['score']))
-            doc_id.setFlags(doc_id.flags() & ~Qt.ItemIsEditable)
-            self.experts.setItem(row_index, 0, doc_id)
+        results = determine_keywords(docs, authors)
+        experts = search_for_keyword(results, search_term=query)
 
-            # set AUTHORS
-            authors = expert.get('author', [])
-            if authors is list:
-                author_str = ', '.join(authors)
-            else:
-                author_str = str(authors)
-            author = QTableWidgetItem(author_str)
-            author.setFlags(author.flags() & ~Qt.ItemIsEditable)
-            self.experts.setItem(row_index, 1, author)
+        self.experts.clear()
+        for expert in experts:
+            entry = QListWidgetItem(str(expert))
+            self.experts.addItem(entry)
 
 
 if __name__ == "__main__":
