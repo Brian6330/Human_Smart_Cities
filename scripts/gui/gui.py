@@ -38,11 +38,11 @@ class GUI(QWidget):
         self.search_results.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.search_results.setHorizontalHeaderLabels(['ID', 'Title(s)', 'Author(s)'])
 
-        self.experts = QListWidget()
-        # self.experts = QTableWidget()
-        # self.experts.setColumnCount(2)
-        # self.experts.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-        # self.experts.setHorizontalHeaderLabels(['Score', 'Author(s)'])
+        # self.experts = QListWidget()
+        self.experts = QTableWidget()
+        self.experts.setColumnCount(2)
+        self.experts.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.experts.setHorizontalHeaderLabels(['Score', 'Author(s)'])
 
     def __setup_layout__(self) -> None:
         """
@@ -92,9 +92,9 @@ class GUI(QWidget):
         self.search_results.setRowCount(len(docs))
         for row_index, doc in enumerate(docs):
             # set ID
-            doc_id = QTableWidgetItem(str(doc['id']))
-            doc_id.setFlags(doc_id.flags() & ~Qt.ItemIsEditable)
-            self.search_results.setItem(row_index, 0, doc_id)
+            score = QTableWidgetItem(str(doc['id']))
+            score.setFlags(score.flags() & ~Qt.ItemIsEditable)
+            self.search_results.setItem(row_index, 0, score)
 
             # set TITLE
             title_str = ', '.join(doc.get('title', []))
@@ -116,10 +116,17 @@ class GUI(QWidget):
         results = determine_keywords(docs, authors)
         experts = search_for_keyword(results, search_term=query)
 
-        self.experts.clear()
-        for expert in experts:
-            entry = QListWidgetItem(str(expert))
-            self.experts.addItem(entry)
+        self.experts.setRowCount(len(experts))
+        for row_index, (expert, score) in enumerate(experts):
+            # set SCORE
+            score = QTableWidgetItem(str(score))
+            score.setFlags(score.flags() & ~Qt.ItemIsEditable)
+            self.experts.setItem(row_index, 0, score)
+
+            # set EXPERT
+            expert = QTableWidgetItem(str(expert))
+            expert.setFlags(score.flags() & ~Qt.ItemIsEditable)
+            self.experts.setItem(row_index, 1, expert)
 
 
 if __name__ == "__main__":
