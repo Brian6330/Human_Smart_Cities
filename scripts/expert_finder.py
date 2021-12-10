@@ -1,7 +1,4 @@
 import pysolr
-import keyword_counter
-import statistics_hsc
-import util_hsc
 
 solr = pysolr.Solr("http://localhost:8983/solr/hsc-data/", always_commit=True)
 
@@ -18,15 +15,16 @@ def search_for_keyword(author_keyword_dict, search_term="swiss", type_tuple=True
                 i = 0  # Keep track of the index, to know how "good" the match is
                 for term in current_dict.get(author):
                     if term[0] == search_term:
-                        matching_authors.append(tuple([author, i]))
+                        matching_authors.append(tuple([author, ((50-i)/50)]))
                     i += 1
+
         # Sort authors by best match of keywords (the higher the occurrence of the keyword, the better)
-        sorted_matching_authors = sorted(matching_authors, key=lambda tup: tup[1])
+        sorted_matching_authors = sorted(matching_authors, key=lambda tup: tup[1], reverse=True)
 
         # Extract only the authors in order of best match
-        sorted_matching_authors_only = [a_tuple[0] for a_tuple in sorted_matching_authors]
+        # sorted_matching_authors_only = [a_tuple[0] for a_tuple in sorted_matching_authors]
         # TODO Score by index
-        return list(sorted_matching_authors_only)
+        return sorted_matching_authors
 
     # Manually extracted keywords just searches for matching author
     else:

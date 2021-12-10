@@ -1,10 +1,11 @@
-from random import random
+import random
 from nltk.corpus import words
 from expert_finder import search_for_keyword
 
 # search_results = solr.search('*')
 # authors = keyword_counter.determine_authors(search_results)
 # automatic_author_keyword_dict = keyword_counter.determine_keywords(search_results, authors)
+
 
 def calc_precision(true_positives, false_positives):
     total_positives = true_positives + false_positives
