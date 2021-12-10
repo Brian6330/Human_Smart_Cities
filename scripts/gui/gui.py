@@ -3,7 +3,7 @@ import sys
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import *
 
-from scripts.evaluation import search_for_keyword
+from scripts.expert_finder import search_for_keyword
 from scripts.keyword_counter import determine_authors
 from solr import *
 

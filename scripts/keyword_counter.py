@@ -10,6 +10,7 @@ def determine_authors(search_results):
     return set(authors)
 
 
+# Returns list of dictionaries
 def determine_keywords(search_results, authors):
     # Get unique authors
     authors_with_keywords = []
