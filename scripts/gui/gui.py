@@ -65,8 +65,6 @@ class GUI(QWidget):
         layout.addWidget(self.experts, ROW, 0, 5, 4)
         ROW += 1
 
-        # TODO: add experts
-
         self.setLayout(layout)
 
     def __setup_connections__(self):
@@ -111,6 +109,7 @@ class GUI(QWidget):
             author.setFlags(author.flags() & ~Qt.ItemIsEditable)
             self.search_results.setItem(row_index, 2, author)
 
+        # TODO: add experts
         # experts = XYZ
         # self.experts.setRowCount(len(experts))
         # for row_index, expert in enumerate(experts):
