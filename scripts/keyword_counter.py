@@ -32,6 +32,4 @@ def determine_keywords(search_results, authors):
         authors_with_keywords.append({current_author: sorted_keywords[0:49]})
         print('Iterated through documents for {}'.format(current_author))
 
-    print('done')
-
     return authors_with_keywords

@@ -1,9 +1,7 @@
 import random
-
+from nltk.corpus import words
 import pysolr
-
 import keyword_counter
-import text_cleaner
 
 solr = pysolr.Solr("http://localhost:8983/solr/hsc-data/", always_commit=True)
 
@@ -26,18 +24,17 @@ uploader_title_dict = {
 }
 
 
-def combine_manual_keywords(uploader_title_dict):
+def combine_manual_keywords(uploaders_title_dict):
     authors_with_keywords = []
 
-    for entry in uploader_title_dict:
+    for entry in uploaders_title_dict:
         content_list = []
-        for document in uploader_title_dict.get(entry):
+        for document in uploaders_title_dict.get(entry):
             my_file = open("../Data/keywords/" + document, "r")
             lines = my_file.readlines()
             content_list.append(([line.rstrip() for line in lines]))
         flat_list = [item for sublist in content_list for item in sublist]
-        # TODO Test with set
-        authors_with_keywords.append({entry: flat_list})
+        authors_with_keywords.append({entry: list(set(flat_list))})
 
     return authors_with_keywords
 
@@ -81,80 +78,40 @@ def complete_manual_term_list(uploader_title_dict):
     return complete_term_list
 
 
-# def select_random_author(all_authors):
-#     return all_authors[random.randint(0, len(all_authors))]
-
-
-# def calculate_statistics(search_results):
-# for current_author in authors:
-#     file_titles = []
-#     for result in search_results:
-#         file_titles.append(search_results['title'])
-#
-#     keywords = []
-#     for title in file_titles:
-#         print("")
-
-# true_positives = calc_true_positives(current_author, combined_dict, manual_dict)
-
-
-def calc_true_positives(author, combined_dict, manual_dict):
-    # TODO
-    print("")
-
-
-def calc_false_positives(author, combined_dict, manual_dict):
-    # TODO
-    print("")
-
-
-def calc_true_negatives(author, combined_dict, manual_dict):
-    # TODO
-    print("")
-
-
-def calc_false_positives(author, combined_dict, manual_dict):
-    # TODO
-    print("")
-
-
-def calc_precision(uuid, results, true_positives, false_positives):
+def calc_precision(true_positives, false_positives):
     total_positives = true_positives + false_positives
 
     # Rare that it happens, but always possible
     if total_positives == 0:
-        precision = 1
+        return 1
     else:
-        precision = true_positives / total_positives
-    print("{:<10s} = {:>6.2f}%".format(
-        uuid,
-        100 * precision
-    ))
+        return true_positives / total_positives
 
 
-def calc_recall(uuid, results, true_positives, false_negatives):
+def calc_recall(true_positives, false_negatives):
     actual_positives = true_positives + false_negatives
+
+    # Rare that it happens, but always possible
     if actual_positives == 0:
-        recall = 0
+        return 0
     else:
-        recall = true_positives / actual_positives
-
-    print("{:<10s} = {:>6.2f}%".format(
-        uuid,
-        100 * recall
-    ))
+        return true_positives / actual_positives
 
 
-def evaluate_matches(manual_keyword_author_dict, automatic_author_keyword_dict, complete_manual_term_list):
+def evaluate_matches(manual_dict, automatic_dict, term_list="",
+                     random_list=False):
     author_choice_tp = 0
     author_choice_tn = 0
     author_choice_fp = 0
     author_choice_fn = 0
 
-    for _ in range(50):
-        selected_word = random.choice(complete_manual_term_list)
-        manual_matches = search_for_keyword(manual_keyword_author_dict, selected_word)
-        automatic_matches = search_for_keyword(automatic_author_keyword_dict, selected_word, type_tuple=True)
+    for _ in range(200):
+        selected_word = random.choice(term_list)
+        if random_list:
+            selected_word = random.sample(words.words(), 1)
+
+        manual_matches = search_for_keyword(manual_dict, selected_word)
+        automatic_matches = search_for_keyword(automatic_dict, selected_word, type_tuple=True)
 
         # Both lists have matches and the first or second expert are matching
         if manual_matches and automatic_matches:
@@ -166,26 +123,37 @@ def evaluate_matches(manual_keyword_author_dict, automatic_author_keyword_dict, 
 
         # If no matching results in manual list, but matching in automatic -> false positive
         elif not manual_matches and automatic_matches:
-            author_choice_fp += 1 #TODO Never entered
+            author_choice_fp += 1
 
-        # Manual matches but no automatic matches -> false negative
+            # Manual matches but no automatic matches -> false negative
         elif manual_matches and not automatic_matches:
             author_choice_fn += 1
 
         # Both lists return no matches -> true negative
         elif not manual_matches and not automatic_matches:
-            author_choice_tn += 1 #TODO Never entered
+            author_choice_tn += 1
 
     return author_choice_tp, author_choice_fp, author_choice_fn, author_choice_tn
 
 
 manual_keyword_author_dict = combine_manual_keywords(uploader_title_dict)
-complete_manual_term_list = complete_manual_term_list(uploader_title_dict)
-tp, fp, fn, tn = evaluate_matches(manual_keyword_author_dict, automatic_author_keyword_dict, complete_manual_term_list)
+manual_terms = complete_manual_term_list(uploader_title_dict)
+
+automatic_terms = []
+for current_dict in automatic_author_keyword_dict:
+    for author in current_dict:
+        for term in current_dict.get(author):
+            automatic_terms.append(term[0])
+
+all_terms = automatic_terms + manual_terms
+
+tp, fp, fn, tn = evaluate_matches(manual_keyword_author_dict, automatic_author_keyword_dict, all_terms)
 print("True positives: {}; False Positives: {}; False Negatives: {}; True Negatives: {}".format(tp, fp, fn, tn))
 
-# TODO Use all words?
-# TODO Statistics
+precision = calc_precision(tp, fp)
+recall = calc_recall(tp, fn)
 
-print(search_for_keyword(manual_keyword_author_dict, "data"))
-print(search_for_keyword(automatic_author_keyword_dict, "data", type_tuple=True))
+print("Precision: {}; Recall {}".format(precision, recall))
+
+# print(search_for_keyword(manual_keyword_author_dict, "data"))
+# print(search_for_keyword(automatic_author_keyword_dict, "data", type_tuple=True))
