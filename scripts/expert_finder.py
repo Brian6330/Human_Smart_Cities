@@ -5,9 +5,7 @@ import util_hsc
 
 solr = pysolr.Solr("http://localhost:8983/solr/hsc-data/", always_commit=True)
 
-search_results = solr.search('*')
-authors = keyword_counter.determine_authors(search_results)
-automatic_author_keyword_dict = keyword_counter.determine_keywords(search_results, authors)
+
 
 
 # TODO adapt this for statistics

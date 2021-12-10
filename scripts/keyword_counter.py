@@ -7,7 +7,8 @@ def determine_authors(search_results):
     for result in search_results:
         authors.append(result['author'])
     print('Extracted {} unique authors.'.format(len(set(authors))))
-    return set(authors)
+    # To remove duplicates, we can simply convert to a set and back to a list
+    return list(set(authors))
 
 
 # Returns list of dictionaries

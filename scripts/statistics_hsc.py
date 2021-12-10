@@ -1,9 +1,10 @@
 from random import random
-
 from nltk.corpus import words
-
 from expert_finder import search_for_keyword
 
+# search_results = solr.search('*')
+# authors = keyword_counter.determine_authors(search_results)
+# automatic_author_keyword_dict = keyword_counter.determine_keywords(search_results, authors)
 
 def calc_precision(true_positives, false_positives):
     total_positives = true_positives + false_positives
@@ -52,7 +53,7 @@ def evaluate_matches(manual_dict, automatic_dict, term_list="",
         elif not manual_matches and automatic_matches:
             author_choice_fp += 1
 
-            # Manual matches but no automatic matches -> false negative
+        # Manual matches but no automatic matches -> false negative
         elif manual_matches and not automatic_matches:
             author_choice_fn += 1
 
