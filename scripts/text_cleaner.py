@@ -1,10 +1,10 @@
 # Tokenize words and remove stop-words
 from nltk.tokenize import word_tokenize
-from stop_words import get_stop_words
+from nltk.corpus import stopwords
 
 # First time setup required for nltk; https://www.nltk.org/data.html
 
-stop_words = get_stop_words('english')
+stop_words = set(stopwords.words('english'))
 
 
 def clean_text(text):
