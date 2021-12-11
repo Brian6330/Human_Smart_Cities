@@ -7,7 +7,7 @@ from nltk.corpus import stopwords
 stop_words = set(stopwords.words('english'))
 
 
-def clean_text(text):
+def clean_text(text) -> list[str]:
     tokenized_words = word_tokenize(text)
     cleaned_word_list = []
     for word in tokenized_words:
@@ -31,7 +31,7 @@ def create_count_set(word_list):
     return word_dict
 
 
-def combine_dicts(dict1, dict2):
+def combine_dicts(dict1: dict, dict2: dict) -> dict:
     new_dict = {}
     word_set = set()
     for x in dict1:

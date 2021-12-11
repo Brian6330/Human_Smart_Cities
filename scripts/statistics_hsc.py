@@ -27,14 +27,14 @@ def calc_recall(true_positives, false_negatives):
         return true_positives / actual_positives
 
 
-def evaluate_matches(manual_dict, automatic_dict, term_list="",
-                     random_list=False):
+def evaluate_matches(manual_dict: dict, automatic_dict: dict, term_list="",
+                     random_list=False) -> (float, float, float, float):
     author_choice_tp = 0
     author_choice_tn = 0
     author_choice_fp = 0
     author_choice_fn = 0
 
-    for _ in range(200):
+    for _ in range(250):
         selected_word = random.choice(term_list)
         if random_list:
             selected_word = random.sample(words.words(), 1)

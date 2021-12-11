@@ -3,11 +3,9 @@ import pysolr
 solr = pysolr.Solr("http://localhost:8983/solr/hsc-data/", always_commit=True)
 
 
-
-
-# TODO adapt this for statistics
-def search_for_keyword(author_keyword_dict, search_term="swiss", type_tuple=True):
+def search_for_keyword(author_keyword_dict: list[dict], search_term="swiss", type_tuple=True) -> list:
     matching_authors = []
+
     # Tuples must be handled differently (automatic variant)
     if type_tuple:
         for current_dict in author_keyword_dict:
@@ -21,9 +19,6 @@ def search_for_keyword(author_keyword_dict, search_term="swiss", type_tuple=True
         # Sort authors by best match of keywords (the higher the occurrence of the keyword, the better)
         sorted_matching_authors = sorted(matching_authors, key=lambda tup: tup[1], reverse=True)
 
-        # Extract only the authors in order of best match
-        # sorted_matching_authors_only = [a_tuple[0] for a_tuple in sorted_matching_authors]
-        # TODO Score by index
         return sorted_matching_authors
 
     # Manually extracted keywords just searches for matching author
@@ -33,9 +28,5 @@ def search_for_keyword(author_keyword_dict, search_term="swiss", type_tuple=True
                 for term in current_dict.get(author):
                     if term == search_term:
                         matching_authors.append(author)
-        # Remove duplicates and return the list
-        return list(matching_authors)
+        return matching_authors
 
-
-# print(search_for_keyword(manual_keyword_author_dict, "data"))
-# print(search_for_keyword(automatic_author_keyword_dict, "data", type_tuple=True))

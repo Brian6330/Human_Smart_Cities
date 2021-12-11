@@ -16,7 +16,7 @@ Use pip (or similar) to install pySolr (e.g. `pip install pysolr`).
 Then you can use the python scripts to interact with solr. 
 
 
-Once you're done, use ` .\bin\solr stop -all` to stop all running solr instances
+Once you're done, use `.\bin\solr stop -all` to stop all running solr instances
 
 ## Uploading Files
 - In `pdf_uploader`, enter your collection and let it run to upload all *.pdfs in root/Data.

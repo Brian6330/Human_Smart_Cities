@@ -4,7 +4,7 @@ from PySide6.QtCore import Qt
 from PySide6.QtWidgets import *
 
 from scripts.expert_finder import search_for_keyword
-from scripts.keyword_counter import determine_authors, determine_keywords
+from scripts.keyword_counter import determine_keywords
 from solr import *
 
 
@@ -112,8 +112,7 @@ class GUI(QWidget):
             author.setFlags(author.flags() & ~Qt.ItemIsEditable)
             self.search_results.setItem(row_index, 2, author)
 
-        authors = determine_authors(docs)
-        results = determine_keywords(docs, authors)
+        results = determine_keywords(docs)
         experts = search_for_keyword(results, search_term=query)
 
         self.experts.setRowCount(len(experts))
