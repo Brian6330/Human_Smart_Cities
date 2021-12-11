@@ -8,3 +8,13 @@ simulation
 dat
 WPS
 Meteo
+terrain
+resolution
+alpine
+precipitation
+atmospheric
+climatology
+WRF
+software
+data
+installation

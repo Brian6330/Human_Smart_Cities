@@ -7,3 +7,14 @@ sharing
 data
 observation
 environment
+PERMOS
+policy
+metadata
+products
+photos
+scientific
+snow
+avalanche
+measurement
+tools
+access

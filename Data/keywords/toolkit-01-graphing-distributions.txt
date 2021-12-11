@@ -4,3 +4,7 @@ quantil
 average
 density
 percent
+plot
+notches
+histograms
+observation
