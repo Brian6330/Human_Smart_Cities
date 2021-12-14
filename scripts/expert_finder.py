@@ -13,7 +13,8 @@ def search_for_keyword(author_keyword_dict: list[dict], search_term="swiss", typ
                 i = 0  # Keep track of the index, to know how "good" the match is
                 for term in current_dict.get(author):
                     if term[0] == search_term:
-                        matching_authors.append(tuple([author, ((50-i)/50)]))
+                        # TODO Use Threshold
+                        matching_authors.append(tuple([author, ((19-i)/19)]))
                     i += 1
 
         # Sort authors by best match of keywords (the higher the occurrence of the keyword, the better)

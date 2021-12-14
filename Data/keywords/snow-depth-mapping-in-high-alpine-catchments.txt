@@ -10,9 +10,8 @@ correlation
 surface
 spectral
 plot
-accuracy
 tourism
-avalanch
+avalanche
 flora
 fauna
 melting
@@ -24,7 +23,6 @@ spatial
 monitoring
 alpine
 swiss
-homogen
 remote
 scanning
 laser
@@ -32,10 +30,5 @@ terrestrial
 satellite
 system
 global
-ground
-penetrating
 radar
 model
-median
-root
-deviation

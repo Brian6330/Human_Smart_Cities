@@ -4,7 +4,6 @@ variable
 response
 explanatory
 dependent
-least
 square
 residual
 plot

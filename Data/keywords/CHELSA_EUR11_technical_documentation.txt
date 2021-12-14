@@ -8,3 +8,13 @@ CHELSA
 parameters
 wind
 orographic
+resolution
+conditions
+application
+ecological
+environmental
+science
+algorithm
+predictors
+time
+boundary

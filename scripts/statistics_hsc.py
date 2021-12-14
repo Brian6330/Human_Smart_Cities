@@ -27,28 +27,30 @@ def calc_recall(true_positives, false_negatives):
         return true_positives / actual_positives
 
 
-def evaluate_matches(manual_dict: dict, automatic_dict: dict, term_list="",
-                     random_list=False) -> (float, float, float, float):
+def evaluate_matches(manual_dict: dict, automatic_dict: dict, iterations: int, term_list="",
+                     random_list=False) -> (float, float, float, float, float):
     author_choice_tp = 0
     author_choice_tn = 0
     author_choice_fp = 0
     author_choice_fn = 0
 
-    for _ in range(250):
+    for _ in range(iterations):
         selected_word = random.choice(term_list)
         if random_list:
             selected_word = random.sample(words.words(), 1)
 
-        manual_matches = search_for_keyword(manual_dict, selected_word)
-        automatic_matches = search_for_keyword(automatic_dict, selected_word, type_tuple=True)
+        manual_matches = search_for_keyword(manual_dict, selected_word, False)
+        automatic_matches = search_for_keyword(automatic_dict, selected_word, True)
 
-        # Both lists have matches and the first or second expert are matching
+        # Both lists have matches
         if manual_matches and automatic_matches:
             if len(automatic_matches) >= 2:
-                if automatic_matches[0] in manual_matches or automatic_matches[1] in manual_matches:
+                if automatic_matches[0][0] in manual_matches or automatic_matches[1][0] in manual_matches:
                     author_choice_tp += 1
-            elif automatic_matches in manual_matches:
+            elif automatic_matches[0][0] in manual_matches:
                 author_choice_tp += 1
+            else:
+                author_choice_fn
 
         # If no matching results in manual list, but matching in automatic -> false positive
         elif not manual_matches and automatic_matches:
@@ -61,5 +63,6 @@ def evaluate_matches(manual_dict: dict, automatic_dict: dict, term_list="",
         # Both lists return no matches -> true negative
         elif not manual_matches and not automatic_matches:
             author_choice_tn += 1
+
 
     return author_choice_tp, author_choice_fp, author_choice_fn, author_choice_tn

@@ -14,3 +14,7 @@ water
 permos
 network
 impact
+snow
+cover
+swiss
+alps

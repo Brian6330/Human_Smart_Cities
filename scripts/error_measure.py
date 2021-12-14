@@ -3,7 +3,6 @@ import keyword_counter
 import statistics_hsc
 import util_hsc
 
-
 solr = pysolr.Solr("http://localhost:8983/solr/hsc-data/", always_commit=True)
 
 uploader_title_dict = {
@@ -21,8 +20,8 @@ uploader_title_dict = {
 }
 
 search_results = solr.search('*')
-automatic_author_keyword_dict = keyword_counter.determine_keywords(search_results)
-
+threshold = 1000
+automatic_author_keyword_dict = keyword_counter.determine_keywords(search_results, threshold)
 
 manual_keyword_author_dict = util_hsc.combine_manual_keywords(uploader_title_dict)
 manual_terms = util_hsc.complete_manual_term_list(uploader_title_dict)
@@ -33,18 +32,18 @@ for current_dict in automatic_author_keyword_dict:
         for term in current_dict.get(author):
             automatic_terms.append(term[0])
 
-all_terms = automatic_terms + manual_terms
+all_terms = list(set(automatic_terms)) + list(set(manual_terms))
 
-tp, fp, fn, tn = statistics_hsc.evaluate_matches(manual_keyword_author_dict, automatic_author_keyword_dict, all_terms)
-print("True positives: {}; False Positives: {}; False Negatives: {}; True Negatives: {}".format(tp, fp, fn, tn))
+tp, fp, fn, tn = statistics_hsc.evaluate_matches(manual_keyword_author_dict, automatic_author_keyword_dict,
+                                                      100, all_terms, random_list=True)
+print(
+    "True positives: {}; False Positives - Automatic Only: {}; False Negatives - Manual Only: {}; True Negatives: {};"
+        .format(
+        tp, fp, fn, tn))
 
 precision = statistics_hsc.calc_precision(tp, fp)
 recall = statistics_hsc.calc_recall(tp, fn)
 
 print("Precision: {}; Recall {}".format(precision, recall))
 
-
-
-
-# print(search_for_keyword(manual_keyword_author_dict, "data"))
-# print(search_for_keyword(automatic_author_keyword_dict, "data", type_tuple=True))
+print("{},{},{},{},{},{}".format(tp, fp, fn, tn, precision, recall))
