@@ -35,7 +35,7 @@ for current_dict in automatic_author_keyword_dict:
 all_terms = list(set(automatic_terms)) + list(set(manual_terms))
 
 tp, fp, fn, tn = statistics_hsc.evaluate_matches(manual_keyword_author_dict, automatic_author_keyword_dict,
-                                                      100, all_terms, random_list=True)
+                                                      100, all_terms, random_list=False)
 print(
     "True positives: {}; False Positives - Automatic Only: {}; False Negatives - Manual Only: {}; True Negatives: {};"
         .format(
@@ -46,4 +46,4 @@ recall = statistics_hsc.calc_recall(tp, fn)
 
 print("Precision: {}; Recall {}".format(precision, recall))
 
-print("{},{},{},{},{},{}".format(tp, fp, fn, tn, precision, recall))
+# print("{},{},{},{},{},{}".format(tp, fp, fn, tn, precision, recall))
