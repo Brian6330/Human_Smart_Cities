@@ -414,3 +414,4 @@ TSWLatexianTemp*
 /.idea/
 /solr-8.10.1/example/cloud/node1/logs/
 /solr-8.10.1/example/cloud/node2/logs/
+.Rproj.user

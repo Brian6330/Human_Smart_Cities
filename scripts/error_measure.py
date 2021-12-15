@@ -20,7 +20,7 @@ uploader_title_dict = {
 }
 
 search_results = solr.search('*')
-threshold = 1000
+threshold = 29 # Starts from 0
 automatic_author_keyword_dict = keyword_counter.determine_keywords(search_results, threshold)
 
 manual_keyword_author_dict = util_hsc.combine_manual_keywords(uploader_title_dict)
