@@ -3,7 +3,7 @@ import pysolr
 solr = pysolr.Solr("http://localhost:8983/solr/hsc-data/", always_commit=True)
 
 
-def search_for_keyword(author_keyword_dict: list[dict], search_term="swiss", type_tuple=True) -> list:
+def search_for_keyword(author_keyword_dict: list[dict], search_term="swiss", type_tuple=True, cut_off=49) -> list:
     matching_authors = []
 
     # Tuples must be handled differently (automatic variant)
@@ -14,7 +14,7 @@ def search_for_keyword(author_keyword_dict: list[dict], search_term="swiss", typ
                 for term in current_dict.get(author):
                     if term[0] == search_term:
                         # TODO Use Threshold
-                        matching_authors.append(tuple([author, ((19-i)/19)]))
+                        matching_authors.append(tuple([author, ((cut_off-i)/cut_off)]))
                     i += 1
 
         # Sort authors by best match of keywords (the higher the occurrence of the keyword, the better)
