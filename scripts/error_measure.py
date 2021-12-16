@@ -35,7 +35,7 @@ for current_dict in automatic_author_keyword_dict:
 all_terms = list(set(automatic_terms)) + list(set(manual_terms))
 
 tp, fp, fn, tn = statistics_hsc.evaluate_matches(manual_keyword_author_dict, automatic_author_keyword_dict,
-                                                      100, all_terms, random_list=False)
+                                                      100, all_terms, False, threshold)
 print(
     "True positives: {}; False Positives - Automatic Only: {}; False Negatives - Manual Only: {}; True Negatives: {};"
         .format(

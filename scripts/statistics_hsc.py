@@ -28,7 +28,7 @@ def calc_recall(true_positives, false_negatives):
 
 
 def evaluate_matches(manual_dict: dict, automatic_dict: dict, iterations: int, term_list="",
-                     random_list=False) -> (float, float, float, float, float):
+                     random_list=False, threshold=49) -> (float, float, float, float, float):
     author_choice_tp = 0
     author_choice_tn = 0
     author_choice_fp = 0
@@ -39,8 +39,8 @@ def evaluate_matches(manual_dict: dict, automatic_dict: dict, iterations: int, t
         if random_list:
             selected_word = random.sample(words.words(), 1)
 
-        manual_matches = search_for_keyword(manual_dict, selected_word, False)
-        automatic_matches = search_for_keyword(automatic_dict, selected_word, True)
+        manual_matches = search_for_keyword(manual_dict, selected_word, False, threshold)
+        automatic_matches = search_for_keyword(automatic_dict, selected_word, True, threshold)
 
         # Both lists have matches
         if manual_matches and automatic_matches:
