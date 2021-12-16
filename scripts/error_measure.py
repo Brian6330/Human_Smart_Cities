@@ -20,7 +20,7 @@ uploader_title_dict = {
 }
 
 search_results = solr.search('*')
-threshold = 29 # Starts from 0
+threshold = 35-1 # Starts from 0
 automatic_author_keyword_dict = keyword_counter.determine_keywords(search_results, threshold)
 
 manual_keyword_author_dict = util_hsc.combine_manual_keywords(uploader_title_dict)
@@ -46,4 +46,4 @@ recall = statistics_hsc.calc_recall(tp, fn)
 
 print("Precision: {}; Recall {}".format(precision, recall))
 
-# print("{},{},{},{},{},{}".format(tp, fp, fn, tn, precision, recall))
+print("{},{},{},{},{},{}".format(tp, fp, fn, tn, precision, recall))
