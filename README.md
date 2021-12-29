@@ -2,12 +2,12 @@
 
 ## Finding Files and Experts in Your Field: <br> How Solr Can Help
 
-In-depth information can be found in our report under Report/HumanSmartCitiesReport.pdf
+In-depth information can be found in our report under [Report/HumanSmartCitiesReport.pdf](./Report/HumanSmartCitiesReport.pdf)
 
 ### How to Set up Solr
 Source: https://solr.apache.org/guide/8_10/solr-tutorial.html
 
-If on windows, from within the solr-8.10.1 directory, run the following command:  
+If on Windows, from within the solr-8.10.1 directory, run the following command:  
 `solr-8.10.0:$ ./bin/solr start -e cloud`  
 If on Mac or Linux, download the [correct Solr distribution](https://solr.apache.org/downloads.html) and launch it from the downloaded directory.
 
@@ -45,13 +45,6 @@ Once you're done, use `.\bin\solr stop -all` to stop all running solr instances
 ### Querying data
 - Appending `~` to the query, allows one to use the default error-tolerance of solr, which is 2 characters.
 
-### Troubleshooting
-
-### Deleting a collection
-- ./bin/solr delete -c collection_name then restart with bin/solr restart -p 8983
-- Alternatively, can be deleted in the web-interface.
-
-
 ### Dropped Docker-compose setup
 First install docker: <br/>
 Windows: Install Docker Desktop and start it
@@ -68,6 +61,12 @@ Stopping the container with:
 ```
 docker-compose stop
 ```
+
+## Troubleshooting
+
+### Deleting a collection
+- ./bin/solr delete -c collection_name then restart with bin/solr restart -p 8983
+- Alternatively, can be deleted in the web-interface.
 
 #### Environmental variables
 To start `solr` one has to set the environmental variable `JAVA_HOME` and `JRE_HOME`.
