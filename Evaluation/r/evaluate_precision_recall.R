@@ -66,6 +66,7 @@ precision = c((sapply(threshold_5[5], mean)),
               (sapply(threshold_10[5], mean)),
               (sapply(threshold_15[5], mean)),
               (sapply(threshold_20[5], mean)),
+              (sapply(threshold_35[5], mean)),
               (sapply(threshold_50[5], mean)),
               (sapply(threshold_100[5], mean)),
               (sapply(threshold_200[5], mean)))
@@ -74,17 +75,18 @@ recall = c((sapply(threshold_5[6], mean)),
            (sapply(threshold_10[6], mean)),
            (sapply(threshold_15[6], mean)),
            (sapply(threshold_20[6], mean)),
+           (sapply(threshold_35[5], mean)),
            (sapply(threshold_50[6], mean)),
            (sapply(threshold_100[6], mean)),
            (sapply(threshold_200[6], mean)))
-thresholds = c(5, 10, 15, 20, 50, 100, 200)
+thresholds = c(5, 10, 15, 20, 35, 50, 100, 200)
 df <- data.frame(thresholds, precision, recall)
 outfile = "../results/plots/precision_recall.png"
 
 ggplot(df, aes_string(x = "thresholds")) +
   geom_line(aes(y = precision, color = "Precision")) +
   geom_line(aes(y = recall, color = "Recall")) +
-  geom_vline(xintercept = 30, linetype="dashed") +
+  geom_vline(xintercept = 36, linetype="dashed") +
   scale_colour_manual(
     name = "",
     values = c("purple", "red"),
@@ -93,5 +95,5 @@ ggplot(df, aes_string(x = "thresholds")) +
   labs(
     x = "Threshold",
     y = "Prec. / Rec. Score",
-    subtitle = "Average of 3 Runs; 100 Random Terms"
+    subtitle = "Average of 5 Runs; 100 Terms Tested"
   ) + ggsave(outfile, dpi = "print")
